@@ -14,7 +14,7 @@ function($, ko) {
       new Item("Foo 1"),
       new Item("Foo 2", true),
       new Item("Foo 3")
-    ])
+    ]);
 
     this.toggleAll.subscribe(function(newValue) {
       this.items().forEach(function(item) {
@@ -25,5 +25,5 @@ function($, ko) {
 
   $(document).ready(function() {
     ko.applyBindings(new ViewModel());
-  })
+  });
 });
