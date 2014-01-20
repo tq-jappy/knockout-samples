@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-style-type" content="text/css">
+  <meta http-equiv="content-script-type" content="text/javascript">
+  <script src="../js/require-config.js"></script>
+  <script data-main="../js/list-shuffle-main.js" src="../js/lib/require.js"></script>
+  <link rel="stylesheet" href="../css/common.css">
+  <title>select items using two lists with move controls and reorder items</title>
+</head>
+<body>
+  <section>
+    <h1>select items using two lists with move controls and reorder items</h1>
+
+    <select data-bind="options: leftItems, optionsText: 'name', optionsValue: 'value', selectedOptions: selectedLeft" size="10" multiple="true"></select>
+
+    <button data-bind="click: moveRight" style="display: inline;">&lt;&lt;</button>
+    <button data-bind="click: moveLeft" style="display: inline;">&gt;&gt;</button>
+
+    <select data-bind="options: rightItems, optionsText: 'name', optionsValue: 'value', selectedOptions: selectedRight" size="10" multiple="true"></select>
+  </section>
+</body>
+</html>
