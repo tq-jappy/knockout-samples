@@ -16,28 +16,28 @@ function($, ko) {
 
     this.selectedLeft = ko.observableArray([]);
     this.selectedRight = ko.observableArray([]);
-
-    this.move = function(selectedItems, fromList, toList) {
-      selectedItems.forEach(function(value) {
-        var selectedItem = ko.utils.arrayFirst(fromList(), function(item) {
-          return value === item.value;
-        });
-
-        if (selectedItem) {
-          toList.push(selectedItem);
-          fromList.remove(selectedItem);
-        }
-      }, this);
-    };
-
-    this.moveLeft = function() {
-      this.move(this.selectedLeft(), this.leftItems, this.rightItems);
-    };
-
-    this.moveRight = function() {
-      this.move(this.selectedRight(), this.rightItems, this.leftItems);
-    };
   }
+
+  ViewModel.prototype.move = function(selectedItems, fromList, toList) {
+    selectedItems().forEach(function(value) {
+      var selectedItem = ko.utils.arrayFirst(fromList(), function(item) {
+        return value === item.value;
+      });
+
+      if (selectedItem) {
+        toList.push(selectedItem);
+        fromList.remove(selectedItem);
+      }
+    }, this);
+  };
+
+  ViewModel.prototype.moveLeft = function() {
+    this.move(this.selectedLeft, this.leftItems, this.rightItems);
+  };
+
+  ViewModel.prototype.moveRight = function() {
+    this.move(this.selectedRight, this.rightItems, this.leftItems);
+  };
 
   $(document).ready(function() {
     ko.applyBindings(new ViewModel());
