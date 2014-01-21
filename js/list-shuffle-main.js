@@ -21,11 +21,7 @@ function($, ko) {
   }
 
   ViewModel.prototype.move = function(selectedItems, fromList, toList) {
-    selectedItems().forEach(function(value) {
-      var selectedItem = ko.utils.arrayFirst(fromList(), function(item) {
-        return value === item.value;
-      });
-
+    selectedItems().forEach(function(selectedItem) {
       if (selectedItem) {
         toList.push(selectedItem);
         fromList.remove(selectedItem);
@@ -46,7 +42,7 @@ function($, ko) {
       this.moveItemToOther(item);
     };
     ko.applyBindingsToNode(option, {event: {dblclick: fn}}, this);
-  }
+  };
 
   ViewModel.prototype.moveItemToOther = function(item) {
     var existsInLeft = this.leftItems.indexOf(item) >= 0;
