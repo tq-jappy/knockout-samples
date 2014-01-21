@@ -13,12 +13,23 @@
   <section>
     <h1>select items using two lists with move controls and reorder items</h1>
 
-    <select data-bind="options: leftItems, optionsText: 'name', optionsValue: 'value', selectedOptions: selectedLeft" size="10" multiple="true"></select>
-
-    <button data-bind="click: moveRight" style="display: inline;">&lt;&lt;</button>
-    <button data-bind="click: moveLeft" style="display: inline;">&gt;&gt;</button>
-
-    <select data-bind="options: rightItems, optionsText: 'name', optionsValue: 'value', selectedOptions: selectedRight" size="10" multiple="true"></select>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <select data-bind="options: leftItems, optionsText: 'name', optionsValue: 'value', selectedOptions: selectedLeft, optionsAfterRender: setMoveOne.bind($data)" size="10" multiple="true"></select>
+          </td>
+          <td>
+            <button data-bind="click: moveRight" style="display: inline;">&gt;&gt;</button>
+            <br />
+            <button data-bind="click: moveLeft" style="display: inline;">&lt;&lt;</button>
+          </td>
+          <td>
+            <select data-bind="options: rightItems, optionsText: 'name', optionsValue: 'value', selectedOptions: selectedRight, optionsAfterRender: setMoveOne.bind($data)" size="10" multiple="true"></select>
+          </td>
+        </tr>
+      <tbody>
+    </tbody>
   </section>
 </body>
 </html>
