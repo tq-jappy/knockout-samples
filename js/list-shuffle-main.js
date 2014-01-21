@@ -51,9 +51,7 @@ function($, ko) {
     if (existsInLeft) {
       this.leftItems.remove(item);
       this.rightItems.push(item);
-    }
-
-    if (existsInRight) {
+    } else if (existsInRight) {
       this.rightItems.remove(item);
       this.leftItems.push(item);
     }
