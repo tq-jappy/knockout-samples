@@ -37,7 +37,7 @@ function($, ko) {
     this.move(this.selectedLeft, this.leftItems, this.rightItems);
   };
 
-  ViewModel.prototype.setMoveOne = function(option, item) {
+  ViewModel.prototype.bindMoveItemWithDblclick = function(option, item) {
     var fn = function() {
       this.moveItemToOther(item);
     };
@@ -45,6 +45,7 @@ function($, ko) {
   };
 
   ViewModel.prototype.moveItemToOther = function(item) {
+    // ダブルクリックされた項目が左のリストにいるか、右のリストにいるか調べておく
     var existsInLeft = this.leftItems.indexOf(item) >= 0;
     var existsInRight = this.rightItems.indexOf(item) >= 0;
 

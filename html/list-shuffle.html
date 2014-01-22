@@ -17,7 +17,7 @@
       <tbody>
         <tr>
           <td>
-            <select data-bind="options: leftItems, optionsText: 'name', selectedOptions: selectedLeft, optionsAfterRender: setMoveOne.bind($data)" size="10" multiple="true"></select>
+            <select data-bind="options: leftItems, optionsText: 'name', selectedOptions: selectedLeft, optionsAfterRender: bindMoveItemWithDblclick.bind($data)" size="10" multiple="true"></select>
           </td>
           <td>
             <button data-bind="click: moveRight">&gt;&gt;</button>
@@ -25,7 +25,7 @@
             <button data-bind="click: moveLeft">&lt;&lt;</button>
           </td>
           <td>
-            <select data-bind="options: rightItems, optionsText: 'name', selectedOptions: selectedRight, optionsAfterRender: setMoveOne.bind($data)" size="10" multiple="true"></select>
+            <select data-bind="options: rightItems, optionsText: 'name', selectedOptions: selectedRight, optionsAfterRender: bindMoveItemWithDblclick.bind($data)" size="10" multiple="true"></select>
           </td>
         </tr>
       <tbody>
