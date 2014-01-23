@@ -1,15 +1,5 @@
-requirejs(['jquery', 'knockout'],
-function($, ko) {
-
-  // Utility: swap elements in an array.
-  function swap(array, i, j) {
-    if (0 <= i && i < array.length && 0 <= j && j < array.length) {
-      var tmp = array[i];
-      array[i] = array[j];
-      array[j] = tmp;
-    }
-  }
-
+requirejs(['jquery', 'knockout', 'util'],
+function($, ko, util) {
   // Model
   function Item(name, value) {
     this.name = name;
@@ -42,32 +32,25 @@ function($, ko) {
     }, this);
   };
 
-  // Move down selected items in the left list.
-  ViewModel.prototype.moveUp = function() {
+  ViewModel.prototype.movePosition = function(weight) {
     var itemsToSort = this.rightItems();
 
     this.selectedRight().forEach(function(item) {
-      var idx = this.rightItems.indexOf(item);
-      if (idx > 0) {
-        swap(itemsToSort, idx, idx-1);
-      }
+      var pos = this.rightItems.indexOf(item);
+      util.swap(itemsToSort, pos, pos + weight);
     }, this);
 
     this.rightItems(itemsToSort);
   };
 
+  // Move down selected items in the left list.
+  ViewModel.prototype.moveUp = function() {
+    this.movePosition(-1);
+  };
+
   // Move up selected items in the left list.
   ViewModel.prototype.moveDown = function() {
-    var itemsToSort = this.rightItems();
-
-    this.selectedRight().forEach(function(item) {
-      var idx = this.rightItems.indexOf(item);
-      if (0 <= idx && idx < this.rightItems().length) {
-        swap(itemsToSort, idx, idx+1);
-      }
-    }, this);
-
-    this.rightItems(itemsToSort);
+    this.movePosition(1);
   };
 
   ViewModel.prototype.moveLeft = function() {
