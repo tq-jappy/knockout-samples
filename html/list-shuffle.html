@@ -27,6 +27,11 @@
           <td>
             <select data-bind="options: rightItems, optionsText: 'name', selectedOptions: selectedRight, optionsAfterRender: bindMoveItemWithDblclick.bind($data)" size="10" multiple="true"></select>
           </td>
+          <td>
+            <button data-bind="click: moveUp">UP</button>
+            <br />
+            <button data-bind="click: moveDown">DOWN</button>
+          </td>
         </tr>
       <tbody>
     </table>
